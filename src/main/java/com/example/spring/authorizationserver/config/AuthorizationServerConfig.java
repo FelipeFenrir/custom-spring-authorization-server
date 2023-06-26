@@ -88,12 +88,14 @@ public class AuthorizationServerConfig {
                                 .userInfoMapper(userInfoMapper)
                         )
                 );
+
         http
                 .securityMatcher(endpointsMatcher)
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
+                .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login"))
                 .exceptionHandling(exceptions ->
                         exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
                 )
@@ -124,6 +126,7 @@ public class AuthorizationServerConfig {
                 .redirectUri("http://127.0.0.1:9095/client")
                 .redirectUri("http://127.0.0.1:9095/login/oauth2/code/spring-authz-server")
                 .redirectUri("https://oauth.pstmn.io/v1/callback")
+                .redirectUri("https://oidcdebugger.com/debug")
                 .scopes(scopes -> scopes.addAll(List.of(
                         OidcScopes.OPENID, OidcScopes.PROFILE, OidcScopes.EMAIL, "offline_access"
                 )))
@@ -146,6 +149,7 @@ public class AuthorizationServerConfig {
                 .redirectUri("http://127.0.0.1:9095/client")
                 .redirectUri("http://127.0.0.1:9095/login/oauth2/code/spring-authz-server")
                 .redirectUri("https://oauth.pstmn.io/v1/callback")
+                .redirectUri("https://oidcdebugger.com/debug")
                 .scopes(scopes -> scopes.addAll(List.of(
                         OidcScopes.OPENID, OidcScopes.PROFILE, OidcScopes.EMAIL, "offline_access"
                 )))
@@ -170,6 +174,7 @@ public class AuthorizationServerConfig {
                 .redirectUri("http://127.0.0.1:9095/client")
                 .redirectUri("http://127.0.0.1:9095/login/oauth2/code/spring-authz-server")
                 .redirectUri("https://oauth.pstmn.io/v1/callback")
+                .redirectUri("https://oidcdebugger.com/debug")
                 .scopes(scopes -> scopes.addAll(List.of(
                         OidcScopes.OPENID, OidcScopes.PROFILE, OidcScopes.EMAIL, "offline_access"
                 )))
@@ -194,6 +199,7 @@ public class AuthorizationServerConfig {
                 .redirectUri("http://127.0.0.1:9095/client")
                 .redirectUri("http://127.0.0.1:9095/login/oauth2/code/spring-authz-server")
                 .redirectUri("https://oauth.pstmn.io/v1/callback")
+                .redirectUri("https://oidcdebugger.com/debug")
                 .scopes(scopes -> scopes.addAll(List.of(
                         OidcScopes.OPENID, OidcScopes.PROFILE, OidcScopes.EMAIL, "offline_access"
                 )))
